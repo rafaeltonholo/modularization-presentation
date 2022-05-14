@@ -55,8 +55,11 @@ dependencies {
     implementation dep.androidx.compose.uiToolingPreview
     implementation dep.androidx.lifecycle.runtime
     implementation dep.androidx.activity.compose
+
     implementation dep.hilt.android
     kapt dep.hilt.compiler
+
+    implementation dep.coil.compose
 
     testImplementation dep.junit
     androidTestImplementation dep.androidx.test.junit

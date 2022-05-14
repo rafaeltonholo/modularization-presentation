@@ -14,6 +14,7 @@ versions.junit = "4.13.2"
 versions.androidx_junit = "1.1.3"
 versions.espressoCore = "3.4.0"
 versions.hilt = "2.42"
+versions.coil = "2.0.0"
 
 ext.versions = versions
 ext.dep = [:]
@@ -62,3 +63,9 @@ hilt.compiler = "com.google.dagger:hilt-compiler:${versions.hilt}"
 dep.hilt = hilt
 
 // endregion Hilt
+
+// region Coil
+def coil = [:]
+coil.compose = "io.coil-kt:coil-compose:${versions.coil}"
+dep.coil = coil
+// endregion Coil
