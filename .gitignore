@@ -1,3 +1,5 @@
+api_credentials.gradle
+
 # Created by https://www.toptal.com/developers/gitignore/api/androidstudio,windows,macos,linux,vim,visualstudiocode,gradle,intellij
 # Edit at https://www.toptal.com/developers/gitignore?templates=androidstudio,windows,macos,linux,vim,visualstudiocode,gradle,intellij
 
@@ -384,4 +386,3 @@ hs_err_pid*
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/androidstudio,windows,macos,linux,vim,visualstudiocode,gradle,intellij
-
