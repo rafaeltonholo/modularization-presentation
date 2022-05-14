@@ -15,6 +15,9 @@ versions.androidx_junit = "1.1.3"
 versions.espressoCore = "3.4.0"
 versions.hilt = "2.42"
 versions.coil = "2.0.0"
+versions.datastore = "1.0.0"
+versions.room = "2.4.2"
+versions.roomPaging = "2.5.0-alpha01"
 
 ext.versions = versions
 ext.dep = [:]
@@ -50,6 +53,17 @@ test.junit = "androidx.test.ext:junit:${versions.androidx_junit}"
 test.espresso = "androidx.test.espresso:espresso-core:${versions.espressoCore}"
 test.composeUiTest = "androidx.compose.ui:ui-test-junit4:${versions.compose}"
 androidx.test = test
+
+def datastore = [:]
+datastore.preferences = "androidx.datastore:datastore-preferences:${versions.datastore}"
+androidx.datastore = datastore
+
+def room = [:]
+room.runtime = "androidx.room:room-runtime:${versions.room}"
+room.compiler = "androidx.room:room-compiler:${versions.room}"
+room.ktx = "androidx.room:room-ktx:${versions.room}"
+room.paging = "androidx.room:room-paging:${versions.roomPaging}"
+androidx.room = room
 
 dep.androidx = androidx
 

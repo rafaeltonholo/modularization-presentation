@@ -3,6 +3,7 @@ plugins {
     id "org.jetbrains.kotlin.android"
     id "kotlin-kapt"
     id "dagger.hilt.android.plugin"
+    id "com.google.devtools.ksp" version "1.5.31-1.0.0"
 }
 
 android {
@@ -59,7 +60,14 @@ dependencies {
     implementation dep.hilt.android
     kapt dep.hilt.compiler
 
+    implementation dep.androidx.datastore.preferences
+
     implementation dep.coil.compose
+
+    implementation dep.androidx.room.runtime
+    implementation dep.androidx.room.ktx
+    implementation dep.androidx.room.paging
+    ksp dep.androidx.room.compiler
 
     testImplementation dep.junit
     androidTestImplementation dep.androidx.test.junit
