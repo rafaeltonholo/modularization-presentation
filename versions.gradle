@@ -18,6 +18,7 @@ versions.coil = "2.0.0"
 versions.datastore = "1.0.0"
 versions.room = "2.4.2"
 versions.roomPaging = "2.5.0-alpha01"
+versions.gson = "2.9.0"
 
 ext.versions = versions
 ext.dep = [:]
@@ -83,3 +84,7 @@ def coil = [:]
 coil.compose = "io.coil-kt:coil-compose:${versions.coil}"
 dep.coil = coil
 // endregion Coil
+
+// region Gson
+dep.gson = "com.google.code.gson:gson:${versions.gson}"
+// endregion Gson
