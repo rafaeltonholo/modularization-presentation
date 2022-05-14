@@ -1,5 +1,7 @@
 buildscript {
     apply from: "versions.gradle"
+    // You should create this file at the room level of the project containing the api credentials
+    apply from: "api_credentials.gradle"
 
     dependencies {
         classpath dep.hilt.androidPlugin
