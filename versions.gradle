@@ -19,6 +19,7 @@ versions.datastore = "1.0.0"
 versions.room = "2.4.2"
 versions.roomPaging = "2.5.0-alpha01"
 versions.gson = "2.9.0"
+versions.retrofit = "2.9.0"
 
 ext.versions = versions
 ext.dep = [:]
@@ -88,3 +89,10 @@ dep.coil = coil
 // region Gson
 dep.gson = "com.google.code.gson:gson:${versions.gson}"
 // endregion Gson
+
+// region Retrofit
+def retrofit = [:]
+retrofit.main = "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+retrofit.converter_gson = "com.squareup.retrofit2:converter-gson:${versions.gson}"
+dep.retrofit = retrofit
+// endregion Retrofit

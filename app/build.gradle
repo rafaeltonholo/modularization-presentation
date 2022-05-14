@@ -69,6 +69,10 @@ dependencies {
     implementation dep.androidx.room.paging
     ksp dep.androidx.room.compiler
 
+    implementation dep.gson
+    implementation dep.retrofit.main
+    implementation dep.retrofit.converter_gson
+
     testImplementation dep.junit
     androidTestImplementation dep.androidx.test.junit
     androidTestImplementation dep.androidx.test.espresso
