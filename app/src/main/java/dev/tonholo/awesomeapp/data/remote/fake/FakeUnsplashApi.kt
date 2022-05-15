@@ -1,0 +1,1 @@
+package dev.tonholo.awesomeapp.data.remote.fakeimport dev.tonholo.awesomeapp.data.model.UnsplashImageimport dev.tonholo.awesomeapp.data.remote.UnsplashApiobject FakeUnsplashApi : UnsplashApi {    override suspend fun getPhotos(page: Int, perPage: Int, orderBy: String): List<UnsplashImage> =        emptyList()}
