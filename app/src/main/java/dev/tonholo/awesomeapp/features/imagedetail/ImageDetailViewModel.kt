@@ -1,0 +1,1 @@
+package dev.tonholo.awesomeapp.features.imagedetailclass ImageDetailViewModel {}

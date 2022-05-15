@@ -1,0 +1,1 @@
+package dev.tonholo.awesomeapp.features.imagedetailimport dev.tonholo.awesomeapp.data.model.UnsplashImagedata class ImageDetailSate(    val isLoading: Boolean = true,    val image: UnsplashImage? = null,)
