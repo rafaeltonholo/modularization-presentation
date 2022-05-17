@@ -84,6 +84,10 @@ dependencies {
     implementation dep.retrofit.main
     implementation dep.retrofit.converter_gson
 
+    implementation dep.androidx.camera2.main
+    implementation dep.androidx.camera2.view
+    implementation dep.androidx.camera2.lifecycle
+
     testImplementation dep.junit
     androidTestImplementation dep.androidx.test.junit
     androidTestImplementation dep.androidx.test.espresso
