@@ -88,6 +88,9 @@ dependencies {
     implementation dep.androidx.camera2.view
     implementation dep.androidx.camera2.lifecycle
 
+    implementation dep.accompanist.pager
+    implementation dep.accompanist.pager_indicators
+
     testImplementation dep.junit
     androidTestImplementation dep.androidx.test.junit
     androidTestImplementation dep.androidx.test.espresso
