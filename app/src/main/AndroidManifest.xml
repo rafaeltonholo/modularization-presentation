@@ -4,8 +4,9 @@
     package="dev.tonholo.awesomeapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-feature android:name="android.hardware.camera.any"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera.any"/>
 
     <application
         android:name=".AwesomeApp"
