@@ -26,6 +26,7 @@ versions.gson = "2.9.0"
 versions.retrofit = "2.9.0"
 versions.camera2 = "1.1.0-rc01"
 versions.accompanist = "0.24.9-beta"
+versions.kotlinx = "1.6.1"
 
 ext.versions = versions
 ext.dep = [:]
@@ -122,3 +123,9 @@ accompanist.pager = "com.google.accompanist:accompanist-pager:${versions.accompa
 accompanist.pager_indicators = "com.google.accompanist:accompanist-pager-indicators:${versions.accompanist}"
 dep.accompanist = accompanist
 // endregion Accompanist
+
+// region Kotlinx
+def kotlinx = [:]
+kotlinx.coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinx"
+dep.kotlinx = kotlinx
+// endregion Kotlinx

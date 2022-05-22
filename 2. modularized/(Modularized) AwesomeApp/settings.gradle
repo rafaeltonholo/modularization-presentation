@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "(Modularized)AwesomeApp"
 include ':app'
 include ':feature:onboard'
+include ':library:ui-theme'
+include ':base'

@@ -2,7 +2,6 @@ plugins {
     id "com.android.application"
     id "org.jetbrains.kotlin.android"
     id "kotlin-kapt"
-    id "dagger.hilt.android.plugin"
     id "com.google.devtools.ksp" version "1.6.21-1.0.5"
 }
 
@@ -51,17 +50,15 @@ android {
 }
 
 dependencies {
+    implementation project(":base")
+    implementation project(":library:ui-theme")
 
     implementation dep.androidx.core.ktx
 
     implementation dep.androidx.lifecycle.runtime
     implementation dep.androidx.activity.compose
 
-    implementation dep.hilt.android
-    implementation dep.hilt.navigation_compose
     kapt dep.hilt.compiler
-
-    implementation dep.androidx.datastore.preferences
 
     implementation dep.coil.compose
 
@@ -70,21 +67,12 @@ dependencies {
     implementation dep.androidx.room.paging
     ksp dep.androidx.room.compiler
 
-    implementation dep.gson
-    implementation dep.retrofit.main
-    implementation dep.retrofit.converter_gson
-
     implementation dep.androidx.camera2.main
     implementation dep.androidx.camera2.view
     implementation dep.androidx.camera2.lifecycle
-
-    implementation dep.accompanist.pager
-    implementation dep.accompanist.pager_indicators
 
     testImplementation dep.junit
     androidTestImplementation dep.androidx.test.junit
     androidTestImplementation dep.androidx.test.espresso
     androidTestImplementation dep.androidx.test.composeUiTest
-    debugImplementation dep.androidx.compose.debug.uiTooling
-    debugImplementation dep.androidx.compose.debug.uiTestManifest
 }

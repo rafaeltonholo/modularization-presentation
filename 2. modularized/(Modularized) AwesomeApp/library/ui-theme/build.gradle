@@ -1,0 +1,9 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: "${project.rootDir}/library/base_library_dependencies.gradle"
+
+dependencies {
+}
