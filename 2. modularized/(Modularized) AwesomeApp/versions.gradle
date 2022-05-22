@@ -7,6 +7,8 @@ versions.versionCode = 1
 versions.versionName = "1.0"
 versions.coreKtx = "1.7.0"
 versions.compose = "1.2.0-beta01"
+versions.compose_customview = "1.2.0-alpha01"
+versions.compose_customview_poolingcontainer = "1.0.0-beta02"
 versions.navigation_compose = "2.4.2"
 versions.material3 = "1.0.0-alpha11"
 versions.lifecycle = "2.3.1"
@@ -44,6 +46,11 @@ def debug = [:]
 debug.uiTooling = "androidx.compose.ui:ui-tooling:${versions.compose}"
 debug.uiTestManifest = "androidx.compose.ui:ui-test-manifest:${versions.compose}"
 compose.debug = debug
+
+def customview = [:]
+customview.main = "androidx.customview:customview:${versions.compose_customview}"
+customview.poolingcontainer = "androidx.customview:customview-poolingcontainer:${versions.compose_customview_poolingcontainer}"
+compose.customview = customview
 
 androidx.compose = compose
 
