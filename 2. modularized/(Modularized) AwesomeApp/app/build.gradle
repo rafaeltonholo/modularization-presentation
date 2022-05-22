@@ -6,6 +6,8 @@ plugins {
     id "com.google.devtools.ksp" version "1.6.21-1.0.5"
 }
 
+apply from: "${rootDir}/compose_dependencies.gradle"
+
 android {
     compileSdk versions.compileSdk
 
@@ -34,13 +36,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
-    }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion versions.compose
     }
     packagingOptions {
         resources {
@@ -58,11 +53,6 @@ android {
 dependencies {
 
     implementation dep.androidx.core.ktx
-
-    implementation dep.androidx.compose.ui
-    implementation dep.androidx.compose.material3
-    implementation dep.androidx.compose.uiToolingPreview
-    implementation dep.androidx.compose.navigation
 
     implementation dep.androidx.lifecycle.runtime
     implementation dep.androidx.activity.compose
