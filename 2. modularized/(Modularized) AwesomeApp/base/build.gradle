@@ -37,6 +37,10 @@ android {
             type.buildConfigField "String", key, "\"$val\""
         }
     }
+
+    hilt {
+        enableAggregatingTask = true
+    }
 }
 
 dependencies {

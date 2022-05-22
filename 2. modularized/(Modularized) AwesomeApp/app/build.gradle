@@ -2,6 +2,7 @@ plugins {
     id "com.android.application"
     id "org.jetbrains.kotlin.android"
     id "kotlin-kapt"
+    id "dagger.hilt.android.plugin"
     id "com.google.devtools.ksp" version "1.6.21-1.0.5"
 }
 
@@ -53,11 +54,15 @@ dependencies {
     implementation project(":base")
     implementation project(":library:ui-theme")
 
+    // Add feature projects
+    implementation project(":feature:onboard")
+
     implementation dep.androidx.core.ktx
 
     implementation dep.androidx.lifecycle.runtime
     implementation dep.androidx.activity.compose
 
+    implementation dep.hilt.android
     kapt dep.hilt.compiler
 
     implementation dep.coil.compose
