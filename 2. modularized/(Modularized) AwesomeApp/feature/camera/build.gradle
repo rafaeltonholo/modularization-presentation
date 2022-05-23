@@ -1,0 +1,14 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id "kotlin-kapt"
+    id "dagger.hilt.android.plugin"
+}
+
+apply from: "${project.rootDir}/feature/base_feature_dependencies.gradle"
+
+dependencies {
+    implementation dep.androidx.camera2.main
+    implementation dep.androidx.camera2.view
+    implementation dep.androidx.camera2.lifecycle
+}

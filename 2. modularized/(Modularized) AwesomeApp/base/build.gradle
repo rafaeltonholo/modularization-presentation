@@ -44,7 +44,7 @@ android {
 }
 
 dependencies {
-    implementation project(":library:ui-theme")
+    api project(":library:ui-theme")
 
     api dep.hilt.android
     api dep.hilt.navigation_compose

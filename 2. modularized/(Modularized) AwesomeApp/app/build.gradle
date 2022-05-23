@@ -56,6 +56,7 @@ dependencies {
 
     // Add feature projects
     implementation project(":feature:onboard")
+    implementation project(":feature:camera")
 
     implementation dep.androidx.core.ktx
 
@@ -71,10 +72,6 @@ dependencies {
     implementation dep.androidx.room.ktx
     implementation dep.androidx.room.paging
     ksp dep.androidx.room.compiler
-
-    implementation dep.androidx.camera2.main
-    implementation dep.androidx.camera2.view
-    implementation dep.androidx.camera2.lifecycle
 
     testImplementation dep.junit
     androidTestImplementation dep.androidx.test.junit
