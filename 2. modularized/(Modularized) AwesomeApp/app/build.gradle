@@ -52,13 +52,13 @@ android {
 
 dependencies {
     implementation project(":base")
-    implementation project(":library:ui-theme")
 
     // Add feature projects
     implementation project(":feature:onboard")
     implementation project(":feature:camera")
     implementation project(":feature:shopping")
     implementation project(":feature:imagedetail")
+    implementation project(":feature:feed")
 
     implementation dep.androidx.core.ktx
 

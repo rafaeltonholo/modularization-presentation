@@ -1,0 +1,14 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id "kotlin-kapt"
+}
+
+apply from: "${project.rootDir}/library/base_library_dependencies.gradle"
+
+dependencies {
+    api dep.hilt.navigation_compose
+
+    implementation dep.hilt.android
+    kapt dep.hilt.compiler
+}
