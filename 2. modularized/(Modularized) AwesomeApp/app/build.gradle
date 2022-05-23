@@ -58,6 +58,7 @@ dependencies {
     implementation project(":feature:onboard")
     implementation project(":feature:camera")
     implementation project(":feature:shopping")
+    implementation project(":feature:imagedetail")
 
     implementation dep.androidx.core.ktx
 
