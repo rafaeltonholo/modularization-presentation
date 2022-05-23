@@ -1,4 +1,4 @@
-package dev.tonholo.awesomeapp.data.datastore
+package dev.tonholo.awesomeapp.feature.onboard.data.datastore
 
 import android.content.Context
 import android.util.Log

@@ -1,7 +1,7 @@
-package dev.tonholo.awesomeapp.data.datastore.extensions
+package dev.tonholo.awesomeapp.feature.onboard.data.datastore.extensions
 
 import androidx.datastore.preferences.core.booleanPreferencesKey
-import dev.tonholo.awesomeapp.data.datastore.DataStoreManager
+import dev.tonholo.awesomeapp.feature.onboard.data.datastore.DataStoreManager
 
 private const val KEY_NAME = "has_presented_onboard"
 

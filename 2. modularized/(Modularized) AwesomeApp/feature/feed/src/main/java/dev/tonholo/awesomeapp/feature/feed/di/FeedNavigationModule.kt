@@ -1,16 +1,16 @@
-package dev.tonholo.awesomeapp.di
+package dev.tonholo.awesomeapp.feature.feed.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
+import dev.tonholo.awesomeapp.feature.feed.navigation.Feed
 import dev.tonholo.awesomeapp.navigation.Destination
-import dev.tonholo.awesomeapp.navigation.Destinations
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppNavigationModule {
+object FeedNavigationModule {
     @[Provides IntoSet]
-    fun provideFeatureDestination(): Destination = Destinations.Feed
+    fun provideFeatureDestination(): Destination = Feed
 }

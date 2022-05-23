@@ -1,4 +1,4 @@
-package dev.tonholo.awesomeapp.di
+package dev.tonholo.awesomeapp.feature.onboard.di
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder

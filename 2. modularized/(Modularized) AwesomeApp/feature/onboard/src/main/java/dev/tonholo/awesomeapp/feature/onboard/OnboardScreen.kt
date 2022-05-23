@@ -34,7 +34,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
-import dev.tonholo.awesomeapp.data.datastore.DataStoreManager
+import dev.tonholo.awesomeapp.feature.onboard.data.datastore.DataStoreManager
 import dev.tonholo.awesomeapp.navigation.Routes
 import dev.tonholo.awesomeapp.ui.theme.AwesomeAppTheme
 

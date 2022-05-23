@@ -4,9 +4,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.tonholo.awesomeapp.data.datastore.DataStoreManager
-import dev.tonholo.awesomeapp.data.datastore.extensions.hasPresentedOnboard
-import dev.tonholo.awesomeapp.data.datastore.extensions.setHasPresentedOnboard
+import dev.tonholo.awesomeapp.feature.onboard.data.datastore.DataStoreManager
+import dev.tonholo.awesomeapp.feature.onboard.data.datastore.extensions.hasPresentedOnboard
+import dev.tonholo.awesomeapp.feature.onboard.data.datastore.extensions.setHasPresentedOnboard
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
