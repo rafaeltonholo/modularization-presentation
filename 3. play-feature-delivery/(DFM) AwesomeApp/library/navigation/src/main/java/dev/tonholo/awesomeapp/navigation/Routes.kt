@@ -1,6 +1,10 @@
 package dev.tonholo.awesomeapp.navigation
 
 object Routes {
+    object Onboard : DestinationRoute {
+        override val route = "onboard"
+    }
+
     object Feed : DestinationRoute {
         override val route = "feed"
     }
