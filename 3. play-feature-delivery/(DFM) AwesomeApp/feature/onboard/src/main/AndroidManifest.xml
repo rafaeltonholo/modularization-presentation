@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:dist="http://schemas.android.com/apk/distribution"
     package="dev.tonholo.awesomeapp.feature.onboard">
 
+    <dist:module
+        dist:instant="false"
+        dist:title="@string/module_name">
+        <dist:delivery>
+            <dist:install-time>
+                <dist:removable dist:value="true" />
+            </dist:install-time>
+        </dist:delivery>
+        <dist:fusing dist:include="true" />
+    </dist:module>
 </manifest>

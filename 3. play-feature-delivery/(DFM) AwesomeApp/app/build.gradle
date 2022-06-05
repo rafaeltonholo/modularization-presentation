@@ -55,7 +55,6 @@ dependencies {
     implementation project(":base")
 
     // Add feature projects
-    implementation project(":feature:onboard")
     implementation project(":feature:camera")
     implementation project(":feature:imagedetail")
     implementation project(":feature:feed")

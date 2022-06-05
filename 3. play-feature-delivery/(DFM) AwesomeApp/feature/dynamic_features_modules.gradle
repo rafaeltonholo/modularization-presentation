@@ -1,5 +1,6 @@
 android {
     dynamicFeatures = [
         ":feature:shopping",
+        ":feature:onboard",
     ]
 }
