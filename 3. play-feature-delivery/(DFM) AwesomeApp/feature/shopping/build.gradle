@@ -1,12 +1,13 @@
 plugins {
-    id 'com.android.library'
+    id 'com.android.dynamic-feature'
     id 'org.jetbrains.kotlin.android'
     id "kotlin-kapt"
     id "dagger.hilt.android.plugin"
 }
 
-apply from: "${project.rootDir}/feature/base_feature_dependencies.gradle"
+apply from: "${project.rootDir}/feature/base_dfm_dependencies.gradle"
 
 dependencies {
+    implementation project(":app")
     implementation dep.coil.compose
 }

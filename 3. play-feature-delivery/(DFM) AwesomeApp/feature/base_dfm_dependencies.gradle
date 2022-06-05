@@ -1,0 +1,41 @@
+apply from: "${rootDir}/versions.gradle"
+apply from: "${rootDir}/compose_dependencies.gradle"
+
+android {
+    compileSdk versions.compileSdk
+
+    defaultConfig {
+        minSdk versions.minSdk
+        targetSdk versions.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildTypes.each { type ->
+        api_credentials.each { key, val ->
+            type.buildConfigField "String", key, "\"$val\""
+        }
+    }
+}
+
+dependencies {
+    implementation project(":base")
+
+    implementation dep.hilt.android
+    implementation dep.hilt.navigation_compose
+    kapt dep.hilt.compiler
+}
