@@ -1,0 +1,131 @@
+def versions = [:]
+
+versions.compileSdk = 32
+versions.minSdk = 21
+versions.targetSdk = 32
+versions.versionCode = 1
+versions.versionName = "1.0"
+versions.coreKtx = "1.7.0"
+versions.compose = "1.2.0-beta01"
+versions.compose_customview = "1.2.0-alpha01"
+versions.compose_customview_poolingcontainer = "1.0.0-beta02"
+versions.navigation_compose = "2.4.2"
+versions.material3 = "1.0.0-alpha11"
+versions.lifecycle = "2.3.1"
+versions.activityCompose = "1.3.1"
+versions.junit = "4.13.2"
+versions.androidx_junit = "1.1.3"
+versions.espresso_core = "3.4.0"
+versions.hilt = "2.42"
+versions.hilt_navigation_compose = "1.0.0"
+versions.coil = "2.0.0"
+versions.datastore = "1.0.0"
+versions.room = "2.4.2"
+versions.roomPaging = "2.5.0-alpha01"
+versions.gson = "2.9.0"
+versions.retrofit = "2.9.0"
+versions.camera2 = "1.1.0-rc01"
+versions.accompanist = "0.24.9-beta"
+versions.kotlinx = "1.6.1"
+
+ext.versions = versions
+ext.dep = [:]
+
+def androidx = [:]
+
+def core = [:]
+core.ktx = "androidx.core:core-ktx:${versions.coreKtx}"
+androidx.core = core
+
+def compose = [:]
+compose.ui = "androidx.compose.ui:ui:${versions.compose}"
+compose.material3 = "androidx.compose.material3:material3:${versions.material3}"
+compose.uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${versions.compose}"
+compose.navigation = "androidx.navigation:navigation-compose:${versions.navigation_compose}"
+
+def debug = [:]
+debug.uiTooling = "androidx.compose.ui:ui-tooling:${versions.compose}"
+debug.uiTestManifest = "androidx.compose.ui:ui-test-manifest:${versions.compose}"
+compose.debug = debug
+
+def customview = [:]
+customview.main = "androidx.customview:customview:${versions.compose_customview}"
+customview.poolingcontainer = "androidx.customview:customview-poolingcontainer:${versions.compose_customview_poolingcontainer}"
+compose.customview = customview
+
+androidx.compose = compose
+
+def lifecycle = [:]
+lifecycle.runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}"
+androidx.lifecycle = lifecycle
+
+def activity = [:]
+activity.compose = "androidx.activity:activity-compose:${versions.activityCompose}"
+androidx.activity = activity
+
+def test = [:]
+test.junit = "androidx.test.ext:junit:${versions.androidx_junit}"
+test.espresso = "androidx.test.espresso:espresso-core:${versions.espresso_core}"
+test.composeUiTest = "androidx.compose.ui:ui-test-junit4:${versions.compose}"
+androidx.test = test
+
+def datastore = [:]
+datastore.preferences = "androidx.datastore:datastore-preferences:${versions.datastore}"
+androidx.datastore = datastore
+
+def room = [:]
+room.runtime = "androidx.room:room-runtime:${versions.room}"
+room.compiler = "androidx.room:room-compiler:${versions.room}"
+room.ktx = "androidx.room:room-ktx:${versions.room}"
+room.paging = "androidx.room:room-paging:${versions.roomPaging}"
+androidx.room = room
+
+def camera2 = [:]
+camera2.main = "androidx.camera:camera-camera2:${versions.camera2}"
+camera2.view = "androidx.camera:camera-view:${versions.camera2}"
+camera2.lifecycle = "androidx.camera:camera-lifecycle:${versions.camera2}"
+androidx.camera2 = camera2
+
+dep.androidx = androidx
+
+dep.junit = "junit:junit:${versions.junit}"
+
+// region Hilt
+def hilt = [:]
+hilt.androidPlugin = "com.google.dagger:hilt-android-gradle-plugin:${versions.hilt}"
+hilt.android = "com.google.dagger:hilt-android:${versions.hilt}"
+hilt.compiler = "com.google.dagger:hilt-compiler:${versions.hilt}"
+hilt.navigation_compose = "androidx.hilt:hilt-navigation-compose:${versions.hilt_navigation_compose}"
+dep.hilt = hilt
+
+// endregion Hilt
+
+// region Coil
+def coil = [:]
+coil.compose = "io.coil-kt:coil-compose:${versions.coil}"
+dep.coil = coil
+// endregion Coil
+
+// region Gson
+dep.gson = "com.google.code.gson:gson:${versions.gson}"
+// endregion Gson
+
+// region Retrofit
+def retrofit = [:]
+retrofit.main = "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+retrofit.converter_gson = "com.squareup.retrofit2:converter-gson:${versions.gson}"
+dep.retrofit = retrofit
+// endregion Retrofit
+
+// region Accompanist
+def accompanist = [:]
+accompanist.pager = "com.google.accompanist:accompanist-pager:${versions.accompanist}"
+accompanist.pager_indicators = "com.google.accompanist:accompanist-pager-indicators:${versions.accompanist}"
+dep.accompanist = accompanist
+// endregion Accompanist
+
+// region Kotlinx
+def kotlinx = [:]
+kotlinx.coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinx"
+dep.kotlinx = kotlinx
+// endregion Kotlinx

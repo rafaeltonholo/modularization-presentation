@@ -1,0 +1,24 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "(DFM)AwesomeApp"
+include ':app'
+include ':feature:onboard'
+include ':library:ui-theme'
+include ':base'
+include ':feature:camera'
+include ':feature:shopping'
+include ':feature:imagedetail'
+include ':feature:feed'
+include ':library:navigation'

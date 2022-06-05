@@ -1,0 +1,82 @@
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "kotlin-kapt"
+    id "dagger.hilt.android.plugin"
+    id "com.google.devtools.ksp" version "1.6.21-1.0.5"
+}
+
+apply from: "${rootDir}/compose_dependencies.gradle"
+
+android {
+    compileSdk versions.compileSdk
+
+    defaultConfig {
+        applicationId "dev.tonholo.awesomeapp.modularized"
+        minSdk versions.minSdk
+        targetSdk versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+
+    buildTypes.each { type ->
+        api_credentials.each { key, val ->
+            type.buildConfigField "String", key, "\"$val\""
+        }
+    }
+}
+
+dependencies {
+    implementation project(":base")
+
+    // Add feature projects
+    implementation project(":feature:onboard")
+    implementation project(":feature:camera")
+    implementation project(":feature:shopping")
+    implementation project(":feature:imagedetail")
+    implementation project(":feature:feed")
+
+    implementation dep.androidx.core.ktx
+
+    implementation dep.androidx.lifecycle.runtime
+    implementation dep.androidx.activity.compose
+
+    implementation dep.hilt.android
+    kapt dep.hilt.compiler
+
+    implementation dep.coil.compose
+
+    implementation dep.androidx.room.runtime
+    implementation dep.androidx.room.ktx
+    implementation dep.androidx.room.paging
+    ksp dep.androidx.room.compiler
+
+    testImplementation dep.junit
+    androidTestImplementation dep.androidx.test.junit
+    androidTestImplementation dep.androidx.test.espresso
+    androidTestImplementation dep.androidx.test.composeUiTest
+}
