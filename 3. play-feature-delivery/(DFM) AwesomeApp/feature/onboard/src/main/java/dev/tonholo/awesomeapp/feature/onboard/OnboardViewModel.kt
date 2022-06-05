@@ -3,14 +3,12 @@ package dev.tonholo.awesomeapp.feature.onboard
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.tonholo.awesomeapp.feature.onboard.data.datastore.DataStoreManager
 import dev.tonholo.awesomeapp.feature.onboard.data.datastore.extensions.hasPresentedOnboard
 import dev.tonholo.awesomeapp.feature.onboard.data.datastore.extensions.setHasPresentedOnboard
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
 class OnboardViewModel @Inject constructor(
     private val dataStoreManager: DataStoreManager,
 ) : ViewModel() {

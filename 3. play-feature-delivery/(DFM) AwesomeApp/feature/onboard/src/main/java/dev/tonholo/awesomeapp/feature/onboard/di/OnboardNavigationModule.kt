@@ -1,35 +1,21 @@
 package dev.tonholo.awesomeapp.feature.onboard.di
 
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
-import dev.tonholo.awesomeapp.feature.onboard.OnboardScreen
+import dev.tonholo.awesomeapp.feature.onboard.OnboardViewModel
+import dev.tonholo.awesomeapp.feature.onboard.navigation.Onboard
 import dev.tonholo.awesomeapp.navigation.Destination
-import dev.tonholo.awesomeapp.navigation.StartDestination
-
-
-internal object Onboard : Destination {
-    override val route = "onboard"
-
-    override fun setup(navController: NavController, builder: NavGraphBuilder) = with(builder) {
-        composable(Onboard.route) {
-            OnboardScreen(navController)
-        }
-    }
-}
+import javax.inject.Provider
 
 @Module
 @InstallIn(SingletonComponent::class)
 object OnboardNavigationModule {
 
     @[Provides IntoSet]
-    fun provideFeatureDestination(): Destination = Onboard
-
-    @[Provides StartDestination]
-    fun provideStartDestination(): String = Onboard.route
+    fun provideFeatureDestination(
+        provider: Provider<OnboardViewModel>,
+    ): Destination = Onboard(provider)
 }

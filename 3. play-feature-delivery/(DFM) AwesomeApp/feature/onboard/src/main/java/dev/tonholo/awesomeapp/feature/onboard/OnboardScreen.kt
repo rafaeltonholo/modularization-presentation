@@ -42,7 +42,7 @@ import dev.tonholo.awesomeapp.ui.theme.AwesomeAppTheme
 @Composable
 fun OnboardScreen(
     navController: NavController = rememberNavController(),
-    viewModel: OnboardViewModel = hiltViewModel(),
+    viewModel: OnboardViewModel,
 ) {
     val state by remember { viewModel.state }
     val pagerState = rememberPagerState()
