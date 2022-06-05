@@ -50,8 +50,8 @@ dependencies {
     api dep.hilt.android
     kapt dep.hilt.compiler
 
-    implementation dep.gson
-    implementation dep.retrofit.main
-    implementation dep.retrofit.converter_gson
+    api dep.gson
+    api dep.retrofit.main
+    api dep.retrofit.converter_gson
 
 }

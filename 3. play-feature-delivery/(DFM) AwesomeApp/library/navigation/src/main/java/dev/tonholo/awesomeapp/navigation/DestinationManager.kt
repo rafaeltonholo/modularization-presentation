@@ -21,12 +21,23 @@ interface DestinationManager {
     fun NavGraphBuilder.setupRoutes(navController: NavController) {
         featuresDestinations.forEach { it.setup(navController, this) }
     }
+
+    fun attachDynamicFeatureModuleDestinations(destinations: Set<Destination>)
 }
 
 internal class DestinationManagerImpl(
     override val startDestination: String,
-    override val featuresDestinations: Set<Destination>,
-) : DestinationManager
+    featuresDestinations: Set<Destination>,
+) : DestinationManager {
+    private val destinations = featuresDestinations.toMutableSet()
+
+    override val featuresDestinations: Set<Destination>
+        get() = destinations
+
+    override fun attachDynamicFeatureModuleDestinations(destinations: Set<Destination>) {
+        this.destinations.addAll(destinations)
+    }
+}
 
 @Qualifier
 annotation class StartDestination
