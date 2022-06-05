@@ -12,7 +12,7 @@ android {
     compileSdk versions.compileSdk
 
     defaultConfig {
-        applicationId "dev.tonholo.awesomeapp.modularized"
+        applicationId "dev.tonholo.awesomeapp.modularized.dfm"
         minSdk versions.minSdk
         targetSdk versions.targetSdk
         versionCode versions.versionCode
