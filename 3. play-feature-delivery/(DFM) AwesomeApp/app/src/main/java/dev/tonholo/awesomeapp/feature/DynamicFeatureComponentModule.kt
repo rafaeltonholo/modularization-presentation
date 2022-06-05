@@ -14,4 +14,9 @@ object DynamicFeatureComponentModule {
     fun provideShoppingDynamicFeatureLoader(): DynamicFeatureLoader =
         Class.forName("dev.tonholo.awesomeapp.feature.shopping.di.DefaultShoppingDynamicFeatureLoader")
             .newInstance() as DynamicFeatureLoader
+
+    @[Provides IntoSet]
+    fun provideOnboardDynamicFeatureLoader(): DynamicFeatureLoader =
+        Class.forName("dev.tonholo.awesomeapp.feature.onboard.di.OnboardDynamicFeatureLoader")
+            .newInstance() as DynamicFeatureLoader
 }
