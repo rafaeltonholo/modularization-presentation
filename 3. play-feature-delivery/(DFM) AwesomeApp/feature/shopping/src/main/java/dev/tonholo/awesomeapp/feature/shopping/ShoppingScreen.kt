@@ -21,11 +21,12 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import dev.tonholo.awesomeapp.data.remote.fake.FakeUnsplashApi
 import dev.tonholo.awesomeapp.feature.shopping.components.SearchBar
 import dev.tonholo.awesomeapp.feature.shopping.components.ShoppingItem
+import dev.tonholo.awesomeapp.feature.shopping.usecase.FilterImagesUseCase
 import dev.tonholo.awesomeapp.ui.common.toolbar.AppToolbar
 import dev.tonholo.awesomeapp.ui.theme.AwesomeAppTheme
 
@@ -33,7 +34,7 @@ import dev.tonholo.awesomeapp.ui.theme.AwesomeAppTheme
 @Composable
 fun ShoppingScreen(
     navController: NavController = rememberNavController(),
-    viewModel: ShoppingViewModel = hiltViewModel(),
+    viewModel: ShoppingViewModel,
 ) {
     val state by viewModel.state.collectAsState()
     Scaffold(
@@ -147,6 +148,6 @@ private fun Preview(
     darkMode: Boolean,
 ) {
     AwesomeAppTheme(darkTheme = darkMode) {
-        ShoppingScreen()
+        ShoppingScreen(viewModel = ShoppingViewModel(FilterImagesUseCase(FakeUnsplashApi)))
     }
 }
