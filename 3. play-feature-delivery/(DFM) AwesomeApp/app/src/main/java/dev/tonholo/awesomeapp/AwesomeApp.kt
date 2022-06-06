@@ -1,7 +1,7 @@
 package dev.tonholo.awesomeapp
 
-import android.app.Application
+import com.google.android.play.core.splitcompat.SplitCompatApplication
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class AwesomeApp : Application()
+class AwesomeApp : SplitCompatApplication()
