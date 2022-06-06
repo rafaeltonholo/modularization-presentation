@@ -9,3 +9,12 @@ interface DynamicFeatureComponent {
 interface DynamicFeatureLoader {
     fun load(dfmEntryPoint: DynamicFeatureEntryPoint): DynamicFeatureComponent
 }
+
+object NotInstalledDynamicFeatureComponent : DynamicFeatureComponent {
+    override fun getFeatureRoutes(): Set<Destination> = emptySet()
+}
+
+object NotInstalledDynamicFeatureLoader : DynamicFeatureLoader {
+    override fun load(dfmEntryPoint: DynamicFeatureEntryPoint): DynamicFeatureComponent =
+        NotInstalledDynamicFeatureComponent
+}

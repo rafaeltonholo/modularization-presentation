@@ -27,13 +27,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
+import com.google.android.play.core.splitinstall.testing.FakeSplitInstallManagerFactory
 import dev.tonholo.awesomeapp.feature.onboard.data.datastore.DataStoreManager
 import dev.tonholo.awesomeapp.navigation.Routes
 import dev.tonholo.awesomeapp.ui.theme.AwesomeAppTheme
@@ -205,7 +205,10 @@ private fun Preview(
 ) {
     AwesomeAppTheme(darkTheme = darkMode) {
         OnboardScreen(
-            viewModel = OnboardViewModel(DataStoreManager(LocalContext.current))
+            viewModel = OnboardViewModel(
+                dataStoreManager = DataStoreManager(LocalContext.current),
+                splitInstallManager = FakeSplitInstallManagerFactory.create(LocalContext.current),
+            ),
         )
     }
 }

@@ -1,8 +1,10 @@
 package dev.tonholo.awesomeapp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.google.android.play.core.splitcompat.SplitCompat
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 import dev.tonholo.awesomeapp.di.DynamicFeatureComponent
@@ -21,6 +23,11 @@ class MainActivity : ComponentActivity() {
     lateinit var dynamicFeatureLoaders: Set<@JvmSuppressWildcards DynamicFeatureLoader>
 
     private lateinit var dynamicFeatureComponents: Set<DynamicFeatureComponent>
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        SplitCompat.installActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,16 +1,22 @@
 package dev.tonholo.awesomeapp.feature.onboard
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.play.core.ktx.requestDeferredInstall
+import com.google.android.play.core.splitinstall.SplitInstallException
+import com.google.android.play.core.splitinstall.SplitInstallManager
 import dev.tonholo.awesomeapp.feature.onboard.data.datastore.DataStoreManager
 import dev.tonholo.awesomeapp.feature.onboard.data.datastore.extensions.hasPresentedOnboard
 import dev.tonholo.awesomeapp.feature.onboard.data.datastore.extensions.setHasPresentedOnboard
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+private const val TAG = "OnboardViewModel"
 class OnboardViewModel @Inject constructor(
     private val dataStoreManager: DataStoreManager,
+    private val splitInstallManager: SplitInstallManager,
 ) : ViewModel() {
 
     val state = mutableStateOf(
@@ -57,6 +63,11 @@ class OnboardViewModel @Inject constructor(
     fun onNavigateToFeed() {
         viewModelScope.launch {
             dataStoreManager.setHasPresentedOnboard()
+            try {
+                splitInstallManager.requestDeferredInstall(listOf("onboard"))
+            } catch (e: SplitInstallException) {
+                Log.e(TAG, "onNavigateToFeed: error when uninstalling module", e)
+            }
         }
     }
 

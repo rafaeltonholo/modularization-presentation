@@ -1,11 +1,11 @@
 package dev.tonholo.awesomeapp.navigation.di
 
+import com.google.android.play.core.splitinstall.SplitInstallManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.tonholo.awesomeapp.navigation.*
-import dev.tonholo.awesomeapp.navigation.DestinationManagerImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -18,5 +18,9 @@ object NavigationModule {
     ): DestinationManager = DestinationManagerImpl(startDestination, featuresDestinations)
 
     @[Provides StartDestination]
-    fun provideStartDestination(): String = Routes.Onboard.route
+    fun provideStartDestination(splitInstallManager: SplitInstallManager): String =
+        if (splitInstallManager.installedModules.any { it == Routes.Onboard.route })
+            Routes.Onboard.route
+        else
+            Routes.Feed.route
 }

@@ -1,15 +1,19 @@
 package dev.tonholo.awesomeapp.di
 
+import android.content.Context
+import com.google.android.play.core.splitinstall.SplitInstallManager
+import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dev.tonholo.awesomeapp.BuildConfig
 import dev.tonholo.awesomeapp.data.remote.UnsplashApi
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -39,4 +43,9 @@ object AppModule {
     @Provides
     fun provideUnsplashApi(retrofit: Retrofit): UnsplashApi =
         retrofit.create(UnsplashApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideSplitInstallManager(@ApplicationContext context: Context): SplitInstallManager =
+        SplitInstallManagerFactory.create(context)
 }
