@@ -1,8 +1,8 @@
 package dev.tonholo.awesomeapp.feature.onboard.di
 
 import dagger.Component
-import dev.tonholo.awesomeapp.di.DynamicFeatureComponent
-import dev.tonholo.awesomeapp.di.DynamicFeatureEntryPoint
+import dev.tonholo.awesomeapp.di.dfm.DynamicFeatureComponent
+import dev.tonholo.awesomeapp.di.dfm.DynamicFeatureEntryPoint
 
 @Component(
     dependencies = [DynamicFeatureEntryPoint::class],

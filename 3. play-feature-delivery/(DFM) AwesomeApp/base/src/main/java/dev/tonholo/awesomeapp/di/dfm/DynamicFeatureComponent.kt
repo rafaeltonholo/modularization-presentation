@@ -1,4 +1,4 @@
-package dev.tonholo.awesomeapp.di
+package dev.tonholo.awesomeapp.di.dfm
 
 import dev.tonholo.awesomeapp.navigation.Destination
 

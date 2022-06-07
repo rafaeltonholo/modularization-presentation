@@ -1,4 +1,4 @@
-package dev.tonholo.awesomeapp.di
+package dev.tonholo.awesomeapp.di.dfm
 
 import android.content.Context
 import com.google.android.play.core.splitinstall.SplitInstallManager

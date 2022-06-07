@@ -6,9 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
-import dev.tonholo.awesomeapp.di.DynamicFeatureLoader
-import dev.tonholo.awesomeapp.di.NotInstalledDynamicFeatureLoader
-import javax.annotation.Nullable
+import dev.tonholo.awesomeapp.di.dfm.DynamicFeatureLoader
+import dev.tonholo.awesomeapp.di.dfm.NotInstalledDynamicFeatureLoader
 
 private const val TAG = "DynamicFeatureComponent"
 

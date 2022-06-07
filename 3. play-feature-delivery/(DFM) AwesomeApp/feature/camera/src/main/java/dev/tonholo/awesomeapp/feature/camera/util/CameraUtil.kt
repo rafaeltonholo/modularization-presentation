@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import dev.tonholo.awesomeapp.R
+import dev.tonholo.awesomeapp.modularized.dfm.R
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
