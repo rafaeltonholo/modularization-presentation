@@ -5,7 +5,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dagger.multibindings.IntoSet
+import dagger.multibindings.IntoMap
+import dagger.multibindings.StringKey
 import dev.tonholo.awesomeapp.di.dfm.DynamicFeatureLoader
 import dev.tonholo.awesomeapp.di.dfm.NotInstalledDynamicFeatureLoader
 
@@ -14,21 +15,21 @@ private const val TAG = "DynamicFeatureComponent"
 @Module
 @InstallIn(SingletonComponent::class)
 object DynamicFeatureComponentModule {
-    @[Provides IntoSet]
+    @[Provides IntoMap StringKey("shopping")]
     fun provideShoppingDynamicFeatureLoader(): DynamicFeatureLoader = try {
         Class.forName("dev.tonholo.awesomeapp.feature.shopping.di.DefaultShoppingDynamicFeatureLoader")
             .newInstance() as DynamicFeatureLoader
     } catch (e: ClassNotFoundException) {
-        Log.w(TAG, "provideShoppingDynamicFeatureLoader: module not installed", e)
+        Log.w(TAG, "shopping: module not installed", e)
         NotInstalledDynamicFeatureLoader
     }
 
-    @[Provides IntoSet]
+    @[Provides IntoMap StringKey("onboard")]
     fun provideOnboardDynamicFeatureLoader(): DynamicFeatureLoader = try {
         Class.forName("dev.tonholo.awesomeapp.feature.onboard.di.OnboardDynamicFeatureLoader")
             .newInstance() as DynamicFeatureLoader
     } catch (e: ClassNotFoundException) {
-        Log.w(TAG, "provideOnboardDynamicFeatureLoader: module not installed", e)
+        Log.w(TAG, "onboard: module not installed", e)
         NotInstalledDynamicFeatureLoader
     }
 }

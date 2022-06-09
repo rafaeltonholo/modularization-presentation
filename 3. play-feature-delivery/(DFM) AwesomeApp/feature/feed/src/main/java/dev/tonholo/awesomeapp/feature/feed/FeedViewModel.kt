@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.tonholo.awesomeapp.data.model.UnsplashImage
 import dev.tonholo.awesomeapp.di.common.IODispatcher
 import dev.tonholo.awesomeapp.feature.feed.usecase.LoadImagesUseCase
+import dev.tonholo.awesomeapp.feature.feed.usecase.RequestShoppingModuleUseCase
 import dev.tonholo.awesomeapp.navigation.Routes
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +18,7 @@ import javax.inject.Inject
 class FeedViewModel @Inject constructor(
     @IODispatcher ioDispatcher: CoroutineDispatcher,
     loadImagesUseCase: LoadImagesUseCase,
+    private val requestShoppingModuleUseCase: RequestShoppingModuleUseCase,
 ) : ViewModel() {
     private val _state = MutableStateFlow(FeedState())
     val state = _state.asStateFlow()
@@ -40,10 +42,6 @@ class FeedViewModel @Inject constructor(
         }
     }
 
-    private fun reduceState(reducer: FeedState.() -> FeedState) {
-        _state.value = reducer(_state.value)
-    }
-
     fun onFabClicked() {
         reduceState { copy(destinationTarget = Routes.Camera()) }
     }
@@ -58,5 +56,40 @@ class FeedViewModel @Inject constructor(
 
     fun onNavigateTriggered() {
         reduceState { copy(destinationTarget = null) }
+    }
+
+    fun navigateToShopping() {
+        viewModelScope.launch {
+            requestShoppingModuleUseCase().collect { state ->
+                when (state) {
+                    is RequestShoppingModuleUseCase.State.Installed -> {
+                        if (!state.reloadRequired) {
+                            reduceState { copy(destinationTarget = Routes.Shopping()) }
+                        } else {
+                            reduceState { copy(shoppingModuleState = null) }
+                        }
+                    }
+                    is RequestShoppingModuleUseCase.State.Downloading -> reduceState {
+                        copy(shoppingModuleState = ShoppingModuleState.Downloading(
+                            progress = state.progress,
+                            totalBytes = state.totalBytes,
+                        ))
+                    }
+                    is RequestShoppingModuleUseCase.State.Failure -> reduceState {
+                        copy(shoppingModuleState = ShoppingModuleState.Failure)
+                    }
+                    RequestShoppingModuleUseCase.State.Installing -> reduceState {
+                        copy(shoppingModuleState = ShoppingModuleState.Installing)
+                    }
+                    RequestShoppingModuleUseCase.State.Preparing -> reduceState {
+                        copy(shoppingModuleState = ShoppingModuleState.Preparing)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun reduceState(reducer: FeedState.() -> FeedState) {
+        _state.value = reducer(_state.value)
     }
 }

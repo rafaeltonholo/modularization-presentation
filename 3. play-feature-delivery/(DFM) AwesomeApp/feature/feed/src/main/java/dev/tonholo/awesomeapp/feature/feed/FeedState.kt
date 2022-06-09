@@ -8,4 +8,12 @@ data class FeedState(
     val errorMessage: String? = null,
     val images: List<UnsplashImage> = emptyList(),
     val destinationTarget: String? = null,
+    val shoppingModuleState: ShoppingModuleState? = null,
 )
+
+sealed interface ShoppingModuleState {
+    object Preparing : ShoppingModuleState
+    data class Downloading(val totalBytes: Long, val progress: Long): ShoppingModuleState
+    object Installing : ShoppingModuleState
+    object Failure : ShoppingModuleState
+}

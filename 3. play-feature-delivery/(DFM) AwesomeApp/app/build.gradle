@@ -61,7 +61,6 @@ dependencies {
 
     implementation dep.androidx.core.ktx
 
-    implementation dep.androidx.lifecycle.runtime
     implementation dep.androidx.activity.compose
 
     implementation dep.hilt.android

@@ -6,12 +6,13 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.tonholo.awesomeapp.navigation.*
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NavigationModule {
 
-    @Provides
+    @[Provides Singleton]
     fun provideDestinationManager(
         @StartDestination startDestination: String,
         featuresDestinations: Set<@JvmSuppressWildcards Destination>,

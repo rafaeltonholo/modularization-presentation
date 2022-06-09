@@ -4,9 +4,9 @@
 
     <dist:module
         dist:instant="false"
-        dist:title="@string/module_name">
+        dist:title="@string/on_demand_shopping_module_name">
         <dist:delivery>
-            <dist:install-time />
+            <dist:on-demand />
         </dist:delivery>
         <dist:fusing dist:include="true" />
     </dist:module>
