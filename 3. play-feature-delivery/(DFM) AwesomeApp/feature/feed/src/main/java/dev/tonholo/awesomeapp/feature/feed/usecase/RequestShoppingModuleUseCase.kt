@@ -26,6 +26,7 @@ class RequestShoppingModuleUseCase @Inject constructor(
         data class Installed(val reloadRequired: Boolean) : State
         object Preparing : State
         data class Downloading(val totalBytes: Long, val progress: Long) : State
+        object Downloaded : State
         object Installing : State
         data class Failure(val exception: Throwable) : State
     }
@@ -40,15 +41,15 @@ class RequestShoppingModuleUseCase @Inject constructor(
         val flow = splitInstallManager.requestProgressFlow()
             .map { state ->
                 when (state.status) {
+                    SplitInstallSessionStatus.PENDING ->
+                        State.Preparing
                     SplitInstallSessionStatus.DOWNLOADING -> {
                         val totalBytes = state.totalBytesToDownload()
                         val progress = state.bytesDownloaded()
                         State.Downloading(totalBytes, progress)
                     }
-                    SplitInstallSessionStatus.FAILED -> {
-                        State.Failure(
-                            Exception("Failed starting installation of $MODULE_NAME. Error: ${state.errorCode}")
-                        )
+                    SplitInstallSessionStatus.DOWNLOADED -> {
+                        State.Downloaded
                     }
                     SplitInstallSessionStatus.INSTALLING -> {
                         State.Installing
@@ -57,15 +58,11 @@ class RequestShoppingModuleUseCase @Inject constructor(
                         reloadFeatureModuleComponent()
                         State.Installed(true)
                     }
-                    SplitInstallSessionStatus.DOWNLOADED -> {
-                        reloadFeatureModuleComponent()
-                        State.Installed(true)
-                    }
-                    else -> {
-                        State.Failure(
-                            Exception("Failed starting installation of $MODULE_NAME. Error: ${state.errorCode}")
+                    else -> State.Failure(
+                        Exception(
+                            "Failed starting installation of $MODULE_NAME. Error: ${state.errorCode}"
                         )
-                    }
+                    )
                 }
             }
 

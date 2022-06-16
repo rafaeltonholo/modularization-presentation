@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.play.core.ktx.requestDeferredInstall
+import com.google.android.play.core.ktx.requestDeferredUninstall
 import com.google.android.play.core.splitinstall.SplitInstallException
 import com.google.android.play.core.splitinstall.SplitInstallManager
 import dev.tonholo.awesomeapp.feature.onboard.data.datastore.DataStoreManager
@@ -64,7 +64,7 @@ class OnboardViewModel @Inject constructor(
         viewModelScope.launch {
             dataStoreManager.setHasPresentedOnboard()
             try {
-                splitInstallManager.requestDeferredInstall(listOf("onboard"))
+                splitInstallManager.requestDeferredUninstall(listOf("onboard"))
             } catch (e: SplitInstallException) {
                 Log.e(TAG, "onNavigateToFeed: error when uninstalling module", e)
             }
