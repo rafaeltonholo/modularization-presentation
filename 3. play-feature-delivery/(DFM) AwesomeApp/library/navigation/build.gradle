@@ -12,6 +12,5 @@ dependencies {
     implementation dep.hilt.android
     kapt dep.hilt.compiler
 
-    implementation dep.play_core_api.feature_delivery
     implementation dep.play_core_api.feature_delivery_ktx
 }

@@ -54,7 +54,6 @@ dependencies {
     api dep.retrofit.main
     api dep.retrofit.converter_gson
 
-    api dep.play_core_api.feature_delivery
     api dep.play_core_api.feature_delivery_ktx
 
     api dep.androidx.lifecycle.runtime
