@@ -48,6 +48,39 @@ android {
         api_credentials.each { key, val ->
             type.buildConfigField "String", key, "\"$val\""
         }
+
+        def bundleRootPath = "${rootDir}/app/build/outputs/bundle/${type.name}"
+        def apksOutput = "$bundleRootPath/apks/app-${type.name}.apks"
+
+        def buildTask = task(
+            "${type.name}BuildApksForLocalTesting",
+            type: JavaExec,
+            group: "Play Feature Delivery",
+        ) {
+            description = "Build APKs for local testing under ${type.name} flavor"
+            classpath = files("$rootDir/bundletool/bundletool.jar")
+            args = [
+                "build-apks",
+                "--overwrite",
+                "--local-testing",
+                "--bundle",
+                "$bundleRootPath/app-${type.name}.aab",
+                "--output",
+                apksOutput,
+            ]
+            dependsOn("bundle${type.name.capitalize()}")
+        }
+
+        task("${type.name}InstallApksForLocalTesting", type: JavaExec, group: "Play Feature Delivery",) {
+            description = "Install APKs for local testing under ${type.name} flavor"
+            classpath = files("$rootDir/bundletool/bundletool.jar")
+            args = [
+                "install-apks",
+                "--apks",
+                apksOutput,
+            ]
+            dependsOn(buildTask)
+        }
     }
 }
 
